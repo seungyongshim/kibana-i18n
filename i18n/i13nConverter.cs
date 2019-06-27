@@ -16,12 +16,11 @@ namespace i18n
         public static string RemoveNoKibanaAndUpdate(string input, string reference)
         {
             Model model = JsonConvert.DeserializeObject<Model>(input);
+            Model refModel = reference ?? JsonConvert.DeserializeObject<Model>(reference);
 
             model.RemoveNonKibana();
 
-
-
-
+            model.AddReference(refModel);
 
             return JsonConvert.SerializeObject(model, Formatting.Indented);
         }

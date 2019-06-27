@@ -3,6 +3,7 @@
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using i18n.Extension;
 
 [assembly: InternalsVisibleTo("i18n.Tests")]
 
@@ -24,9 +25,8 @@ namespace i18n
 
             Console.WriteLine($"{sourceFile} {targetFile} {refereFile}");
 
-            var source = File.ReadAllText(sourceFile);
-
-            var reference = refereFile??File.ReadAllText(refereFile);
+            var source = sourceFile.ReadAllFileText();
+            var reference = refereFile?.ReadAllFileText()
 
             var target = i13nConverter.RemoveNoKibanaAndUpdate(source, reference);
 
