@@ -20,7 +20,7 @@ namespace i18n
 
             model.RemoveNonKibana();
 
-            model.AddReference(refModel);
+            model.AddModel(refModel);
 
             return JsonConvert.SerializeObject(model, Formatting.Indented);
         }

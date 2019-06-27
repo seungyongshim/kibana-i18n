@@ -24,16 +24,23 @@ namespace i18n.Extension
         {
             return File.ReadAllText(filepath);
         }
-        
 
-        public static void RemoveNonKibana (this DTO.Model model)
+        public static void RemoveNonKibana(this Model model)
         {
+            if (model == null) return;
+
             var ret = model.messages.Where(x => x.Value.IsMatchKibanaWord()).ToDictionary(x => x.Key, x => x.Value);
             model.messages = ret;
         }
 
-        public static void AddReference(this DTO.Model model, DTO.Model reference)
+        public static void AddModel(this Model model, Model reference)
         {
+            if (reference == null) return;
+
+            foreach (var item in reference.messages)
+            {
+                model.messages[item.Key] = item.Value;
+            }
         }
     }
 }

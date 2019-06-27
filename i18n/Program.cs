@@ -19,9 +19,9 @@ namespace i18n
                 return;
             }
 
-            string sourceFile = args.Length > 1 ? args[0] : null;
-            string targetFile = args.Length > 1 ? args[0] : null;
-            string refereFile = args.Length > 2 ? args[1] : null;
+            string sourceFile = args.Length > 0 ? args[0] : null;
+            string targetFile = args.Length > 0 ? args[0] : null;
+            string refereFile = args.Length > 1 ? args[1] : null;
 
             Console.WriteLine($"{sourceFile} {targetFile} {refereFile}");
 
