@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.IO;
+using i18n.DTO;
+using Newtonsoft.Json;
 
 namespace i18n.Extension
 {
     public static class Ext
     {
+        public static T JsonTo<T>(this string input)
+        {
+            return JsonConvert.DeserializeObject<T>(input);
+        }
+
         public static bool IsMatchKibanaWord(this string str)
         {
             return Regex.IsMatch(str, @"Kibana", RegexOptions.Compiled);
