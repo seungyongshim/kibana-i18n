@@ -16,7 +16,7 @@ namespace i18n
         public static string RemoveNoKibanaAndUpdate(string input, string reference)
         {
             Model model = JsonConvert.DeserializeObject<Model>(input);
-            Model refModel = reference ?? JsonConvert.DeserializeObject<Model>(reference);
+            Model refModel = reference != null ? JsonConvert.DeserializeObject<Model>(reference) : null;
 
             model.RemoveNonKibana();
 

@@ -26,7 +26,7 @@ namespace i18n
             Console.WriteLine($"{sourceFile} {targetFile} {refereFile}");
 
             var source = sourceFile.ReadAllFileText();
-            var reference = refereFile?.ReadAllFileText()
+            var reference = refereFile?.ReadAllFileText();
 
             var target = i13nConverter.RemoveNoKibanaAndUpdate(source, reference);
 
