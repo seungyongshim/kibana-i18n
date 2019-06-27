@@ -13,14 +13,14 @@ namespace i18n.Tests
         [Fact]
         public void StringHasNotKibana()
         {
-            var sample = @"所有文档";
+            string sample = @"所有文档";
             sample.IsMatchKibanaWord().Should().BeFalse();
         }
 
         [Fact]
         public void StringHasKibana()
         {
-            var sample = @"似乎 Kibana 较少地轮询 Elasticsearch。";
+            string sample = @"似乎 Kibana 较少地轮询 Elasticsearch";
 
             sample.IsMatchKibanaWord().Should().BeTrue();
         }
@@ -28,9 +28,26 @@ namespace i18n.Tests
         [Fact]
         public void StringHaskibana()
         {
-            var sample = @"似乎 kibana 较少地轮询 Elasticsearch。";
+            string sample = @"似乎 kibana 较少地轮询 Elasticsearch";
 
             sample.IsMatchKibanaWord().Should().BeFalse();
+        }
+
+
+        [Fact]
+        public void StringHasUnImportantkibana()
+        {
+            string sample = @"{allOfKibanaText}";
+
+            sample.IsMatchKibanaWord().Should().BeFalse();
+        }
+
+        [Fact]
+        public void StringHasBLUECATS()
+        {
+            string sample = @"BLUE CATS";
+
+            sample.IsMatchKibanaWord().Should().BeTrue();
         }
     }
 }

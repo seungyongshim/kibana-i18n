@@ -15,9 +15,17 @@ namespace i18n.Extension
             return JsonConvert.DeserializeObject<T>(input);
         }
 
-        public static bool IsMatchKibanaWord(this string str)
+        public static bool IsMatchKibanaWord(this string input)
         {
-            return Regex.IsMatch(str, @"Kibana", RegexOptions.Compiled);
+            if (Regex.IsMatch(input, @"BLUE CATS", RegexOptions.Compiled)) return true;
+
+            var matchesKibana = Regex.Matches(input, @"Kibana", RegexOptions.Compiled);
+            var matchesNoKibana = Regex.Matches(input, @"{[^{]*Kibana[^}]*}", RegexOptions.Compiled);
+
+            if (matchesKibana.Count - matchesNoKibana.Count > 0)
+                return true;
+            else
+                return false;
         }
 
         public static string ReadAllFileText(this string filepath)
